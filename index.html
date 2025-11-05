@@ -1,0 +1,904 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cybersecurity Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #00ff41;
+            --secondary: #0a0e27;
+            --dark: #050814;
+            --text: #e0e0e0;
+            --accent: #00d9ff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(10, 14, 39, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 1rem 5%;
+            box-shadow: 0 2px 20px rgba(0, 255, 65, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            color: var(--text);
+            text-decoration: none;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: width 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            transition: all 0.3s;
+        }
+
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 5%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, var(--secondary) 25%, transparent 25%),
+                        linear-gradient(-45deg, var(--secondary) 25%, transparent 25%),
+                        linear-gradient(45deg, transparent 75%, var(--secondary) 75%),
+                        linear-gradient(-45deg, transparent 75%, var(--secondary) 75%);
+            background-size: 20px 20px;
+            opacity: 0.1;
+            animation: bgScroll 20s linear infinite;
+        }
+
+        @keyframes bgScroll {
+            0% { background-position: 0 0; }
+            100% { background-position: 20px 20px; }
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            display: flex;
+            align-items: center;
+            gap: 3rem;
+            z-index: 1;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
+        }
+
+        .profile-img {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            border: 3px solid var(--primary);
+            box-shadow: 0 0 30px var(--primary);
+            object-fit: cover;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .hero-text h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        .hero-text h2 {
+            font-size: 1.5rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        .hero-text p {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .cta-btn {
+            padding: 1rem 2rem;
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 0 20px var(--primary);
+        }
+
+        .cta-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 30px var(--primary);
+        }
+
+        /* Sections */
+        section {
+            padding: 5rem 5%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            text-align: center;
+            color: var(--primary);
+            text-shadow: 0 0 10px var(--primary);
+        }
+
+        /* About Section */
+        .about-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-card {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--primary);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(50px);
+        }
+
+        .skill-card.visible {
+            animation: slideUp 0.6s forwards;
+        }
+
+        @keyframes slideUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 5px 30px rgba(0, 255, 65, 0.3);
+        }
+
+        .skill-card h3 {
+            color: var(--accent);
+            margin-bottom: 1rem;
+        }
+
+        /* Services Section */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .service-card {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .service-card.visible {
+            animation: scaleIn 0.5s forwards;
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .service-card:hover {
+            border-left-width: 8px;
+            transform: translateX(10px);
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .project-card {
+            background: var(--secondary);
+            border-radius: 10px;
+            overflow: hidden;
+            border: 1px solid var(--primary);
+            transition: all 0.3s;
+            opacity: 0;
+            transform: rotateY(90deg);
+        }
+
+        .project-card.visible {
+            animation: rotateIn 0.6s forwards;
+        }
+
+        @keyframes rotateIn {
+            to {
+                opacity: 1;
+                transform: rotateY(0);
+            }
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 40px rgba(0, 255, 65, 0.3);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+        }
+
+        .project-info {
+            padding: 1.5rem;
+        }
+
+        /* Experience Timeline */
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--primary);
+        }
+
+        .timeline-item {
+            margin-bottom: 3rem;
+            position: relative;
+            opacity: 0;
+            transform: translateX(-50px);
+        }
+
+        .timeline-item.visible {
+            animation: slideInLeft 0.6s forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-item:nth-child(even) {
+            transform: translateX(50px);
+        }
+
+        .timeline-item:nth-child(even).visible {
+            animation: slideInRight 0.6s forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .timeline-content {
+            background: var(--secondary);
+            padding: 1.5rem;
+            border-radius: 10px;
+            border: 1px solid var(--primary);
+            width: 45%;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            margin-left: auto;
+        }
+
+        /* Certificates */
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .cert-card {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--accent);
+            text-align: center;
+            transition: all 0.3s;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .cert-card.visible {
+            animation: fadeInUp 0.5s forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .cert-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 5px 30px rgba(0, 217, 255, 0.3);
+        }
+
+        /* Contact Section */
+        .contact-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .contact-card {
+            background: var(--secondary);
+            padding: 2rem;
+            border-radius: 10px;
+            border: 1px solid var(--primary);
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .contact-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 20px rgba(0, 255, 65, 0.3);
+        }
+
+        .contact-icon {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: var(--accent);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--secondary);
+            padding: 2rem 5%;
+            text-align: center;
+            border-top: 2px solid var(--primary);
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+
+        .social-links a {
+            color: var(--text);
+            font-size: 1.5rem;
+            transition: all 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--primary);
+            transform: scale(1.2);
+        }
+
+        /* Mobile Styles */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                flex-direction: column;
+                background: rgba(10, 14, 39, 0.98);
+                width: 100%;
+                padding: 2rem;
+                transition: left 0.3s;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .hero-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .hero-text h1 {
+                font-size: 2rem;
+            }
+
+            .profile-img {
+                width: 200px;
+                height: 200px;
+            }
+
+            .timeline::before {
+                left: 0;
+            }
+
+            .timeline-content {
+                width: 100%;
+                margin-left: 2rem !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">CyberSec_Dev</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#education">Education</a></li>
+                <li><a href="#research">Research</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#certificates">Certificates</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <img src="profile.jpg" alt="Profile" class="profile-img">
+            <div class="hero-text">
+                <h1>PhD Scholar & Cybersecurity Researcher</h1>
+                <h2>Protecting Digital Assets | Building Secure Solutions</h2>
+                <p>I’m David Toluwani Ehigie, a PhD student in Engineering and a cybersecurity researcher passionate about developing secure and intelligent digital systems through emerging technologies such as artificial intelligence, blockchain, and data privacy frameworks. I earned my Master’s degree in Engineering (Cybersecurity) with First Class Honors from Gujarat Technological University (GTU), India, where I completed my thesis titled “Deep Learning-Based Enhanced Model for Detection of Phishing Websites.” Prior to that, I obtained my Bachelor’s degree in Computer Science from Global Wealth University, graduating with Second Class Honours (Upper Division). My academic and research journey is driven by a commitment to addressing real-world security challenges—from phishing and digital forensics to AI-driven fraud detection and blockchain-based transaction integrity defend against modern threats.</p>
+                <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get In Touch</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <h2 class="section-title">About Me</h2>
+        <div class="about-content">
+            <div class="skill-card">
+                <h3>🔒 Cybersecurity</h3>
+                <p>Expert in network security, penetration testing, vulnerability assessment, and incident response. Certified in ethical hacking and security frameworks.</p>
+            </div>
+            <div class="skill-card">
+                <h3>💻 Blockchain Technologies</h3>
+                <p>Experienced with blockchain technolgies with focus on blockchain security</p>
+            </div>
+            <div class="skill-card">
+                <h3>🛡️Cloud Computing</h3>
+                <p>Experienced with cloud technologies like AWS EC2. Completed the AWS Academy Cloud Foundations.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Education Section -->
+    <section id="education">
+        <h2 class="section-title">Education</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>🎓 PhD in Engineering</h3>
+                    <h4>Ahmedabad University | 2023- Present</h4>
+                    <p>Specialized in AI-Driven Security and Blockchain Security.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>🎓 Master of Engineerin in Cybersecurity</h3>
+                    <h4> Gujarat Technological University | 2023 - 2025</h4>
+                    <p>Focus on software engineering, algorithms, and computer networks. Dean's List for academic excellence.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>🎓 Bachelor of science in Cmoputer Science</h3>
+                    <h4>Global Wealth University | Lome, Togo | 2018-2022</h4>
+                    <p>Focus on software engineering, algorithms, and computer networks.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Research Interests Section -->
+    <section id="research">
+        <h2 class="section-title">Research Interests</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🤖 AI in Cybersecurity</h3>
+                <p>Exploring machine learning algorithms for threat detection, anomaly detection, and automated security response systems.</p>
+            </div>
+            <div class="service-card">
+                <h3>🔐 Cryptography</h3>
+                <p>Research in post-quantum cryptography, blockchain security, and privacy-preserving technologies.</p>
+            </div>
+            <div class="service-card">
+                <h3>🌐 IoT Security</h3>
+                <p>Investigating security vulnerabilities in Internet of Things devices and developing secure communication protocols.</p>
+            </div>
+            <div class="service-card">
+                <h3>☁️ Cloud Security</h3>
+                <p>Studying cloud infrastructure security, serverless architectures, and container security best practices.</p>
+            </div>
+            <div class="service-card">
+                <h3>🧬 Malware Analysis</h3>
+                <p>Advanced malware reverse engineering, behavior analysis, and developing detection mechanisms.</p>
+            </div>
+            <div class="service-card">
+                <h3>🔍 Threat Intelligence</h3>
+                <p>Research in cyber threat intelligence, attack attribution, and predictive security analytics.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services">
+        <h2 class="section-title">Services</h2>
+        <div class="services-grid">
+            <div class="service-card">
+                <h3>🔍 Penetration Testing</h3>
+                <p>Comprehensive security assessments to identify vulnerabilities before attackers do. Web apps, networks, and infrastructure testing.</p>
+            </div>
+            <div class="service-card">
+                <h3>🔐 Security Audits</h3>
+                <p>Detailed security audits and compliance assessments for your systems and applications.</p>
+            </div>
+            <div class="service-card">
+                <h3>⚙️ Secure Development</h3>
+                <p>Building secure applications from the ground up with best practices and security frameworks.</p>
+            </div>
+            <div class="service-card">
+                <h3>📚 Security Training</h3>
+                <p>Training teams on secure coding practices, security awareness, and defensive programming.</p>
+            </div>
+            <div class="service-card">
+                <h3>🚨 Incident Response</h3>
+                <p>Rapid response to security incidents, forensic analysis, and breach mitigation.</p>
+            </div>
+            <div class="service-card">
+                <h3>🛠️ Custom Solutions</h3>
+                <p>Developing custom security tools and automation scripts tailored to your needs.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Projects Section -->
+    <section id="projects">
+        <h2 class="section-title">Featured Projects</h2>
+        <div class="projects-grid">
+            <div class="project-card">
+                <div class="project-img">🔒</div>
+                <div class="project-info">
+                    <h3>Security Scanner Tool</h3>
+                    <p>Automated vulnerability scanner for web applications with comprehensive reporting.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">🛡️</div>
+                <div class="project-info">
+                    <h3>Intrusion Detection System</h3>
+                    <p>ML-based IDS for detecting anomalous network traffic patterns.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">🔐</div>
+                <div class="project-info">
+                    <h3>Password Manager</h3>
+                    <p>Secure password management application with end-to-end encryption.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">📊</div>
+                <div class="project-info">
+                    <h3>Security Dashboard</h3>
+                    <p>Real-time security monitoring dashboard for enterprise environments.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">🔍</div>
+                <div class="project-info">
+                    <h3>Phishing Detection System</h3>
+                    <p>AI-powered system to detect and prevent phishing attacks.</p>
+                </div>
+            </div>
+            <div class="project-card">
+                <div class="project-img">⚡</div>
+                <div class="project-info">
+                    <h3>API Security Gateway</h3>
+                    <p>Secure API gateway with rate limiting and threat protection.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Experience Section -->
+    <section id="experience">
+        <h2 class="section-title">Experience</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Senior Security Consultant</h3>
+                    <h4>CyberDefense Corp | 2022 - Present</h4>
+                    <p>Leading security assessments and penetration testing for Fortune 500 clients. Developed custom security solutions and trained teams on secure practices.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Full Stack Developer</h3>
+                    <h4>TechSolutions Inc | 2020 - 2022</h4>
+                    <p>Developed secure web applications using React and Node.js. Implemented security best practices and conducted code reviews.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>Security Analyst</h3>
+                    <h4>SecureNet Systems | 2018 - 2020</h4>
+                    <p>Monitored security events, performed vulnerability assessments, and responded to security incidents.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates">
+        <h2 class="section-title">Certifications</h2>
+        <div class="cert-grid">
+            <div class="cert-card">
+                <h3>🎓 CEH</h3>
+                <p>Certified Ethical Hacker</p>
+            </div>
+            <div class="cert-card">
+                <h3>🎓 OSCP</h3>
+                <p>Offensive Security Certified Professional</p>
+            </div>
+            <div class="cert-card">
+                <h3>🎓 CISSP</h3>
+                <p>Certified Information Systems Security Professional</p>
+            </div>
+            <div class="cert-card">
+                <h3>🎓 CompTIA Security+</h3>
+                <p>Security+ Certification</p>
+            </div>
+            <div class="cert-card">
+                <h3>🎓 AWS Security</h3>
+                <p>AWS Security Specialty</p>
+            </div>
+            <div class="cert-card">
+                <h3>🎓 Web Security</h3>
+                <p>Advanced Web Security Certification</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <h2 class="section-title">Get In Touch</h2>
+        <div class="contact-container">
+            <div class="contact-card">
+                <div class="contact-icon">📧</div>
+                <h3>Email</h3>
+                <p>security@example.com</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📱</div>
+                <h3>Phone</h3>
+                <p>+1 (555) 123-4567</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">📍</div>
+                <h3>Location</h3>
+                <p>San Francisco, CA</p>
+            </div>
+            <div class="contact-card">
+                <div class="contact-icon">💼</div>
+                <h3>LinkedIn</h3>
+                <p>linkedin.com/in/cybersec</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 CyberSec_Dev. All rights reserved.</p>
+        <div class="social-links">
+            <a href="#">GitHub</a>
+            <a href="#">LinkedIn</a>
+            <a href="#">Twitter</a>
+            <a href="#">Medium</a>
+        </div>
+    </footer>
+
+    <script>
+        // Hamburger Menu
+        const hamburger = document.querySelector('.hamburger');
+        const navLinks = document.querySelector('.nav-links');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Smooth Scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Scroll Animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        // Observe all animated elements
+        document.querySelectorAll('.skill-card, .service-card, .project-card, .timeline-item, .cert-card').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Active Nav Link
+        window.addEventListener('scroll', () => {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
