@@ -47,11 +47,16 @@
         }
 
         .logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--primary);
-            text-shadow: 0 0 10px var(--primary);
+           display: flex;
+           align-items: center;
         }
+
+       .logo img {
+            height: 40px;
+            width: auto;
+            max-width: 200px;
+        }
+        
 
         .nav-links {
             display: flex;
@@ -173,7 +178,7 @@
         }
 
         .hero-text h1 {
-            font-size: 3rem;
+            font-size: 2rem;
             margin-bottom: 1rem;
             color: var(--primary);
             text-shadow: 0 0 10px var(--primary);
@@ -224,8 +229,8 @@
             text-shadow: 0 0 10px var(--primary);
         }
 
-        /* About Section */
-        .about-content {
+        /* Skills Section */
+        .skills-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
             gap: 2rem;
@@ -540,10 +545,10 @@
     <!-- Navigation -->
     <nav>
         <div class="nav-container">
-            <div class="logo">CyberSec_Dev</div>
+            <div class="logo"><img src="logo.png" alt="David Ehigie Logo"></div>
             <ul class="nav-links">
                 <li><a href="#home">Home</a></li>
-                <li><a href="#about">About</a></li>
+                <li><a href="#skills">Skills</a></li>
                 <li><a href="#education">Education</a></li>
                 <li><a href="#research">Research</a></li>
                 <li><a href="#services">Services</a></li>
@@ -565,17 +570,17 @@
         <div class="hero-content">
             <img src="profile.jpg" alt="Profile" class="profile-img">
             <div class="hero-text">
-                <h1>PhD Scholar & Cybersecurity Researcher</h1>
-                <h2>Protecting Digital Assets | Building Secure Solutions</h2>
-                <p>I’m David Toluwani Ehigie, a PhD student in Engineering and a cybersecurity researcher passionate about developing secure and intelligent digital systems through emerging technologies such as artificial intelligence, blockchain, and data privacy frameworks. I earned my Master’s degree in Engineering (Cybersecurity) with First Class Honors from Gujarat Technological University (GTU), India, where I completed my thesis titled “Deep Learning-Based Enhanced Model for Detection of Phishing Websites.” Prior to that, I obtained my Bachelor’s degree in Computer Science from Global Wealth University, graduating with Second Class Honours (Upper Division). My academic and research journey is driven by a commitment to addressing real-world security challenges—from phishing and digital forensics to AI-driven fraud detection and blockchain-based transaction integrity defend against modern threats.</p>
+                <h1>David Toluwani Ehigie</h1>
+                <h2>PhD Scholar | Cybersecurity Researcher</h2>
+                <p>I’m David Toluwani Ehigie, a PhD student in Engineering at Ahmedabad University and a cybersecurity researcher passionate about securing digital infrastructure and intelligent systems through technologies such as artificial intelligence, blockchain and cloud computing. I earned my Master’s degree in Engineering (Cybersecurity) with First Class Honors from Gujarat Technological University (GTU), India, where I completed my thesis titled “Deep Learning-Based Enhanced Model for Detection of Phishing Websites”. Prior to that, I obtained my Bachelor’s degree in Computer Science from Global Wealth University, graduating with a second class honours (upper division). My academic and research journey is driven by passion and commitment to addressing real world security challenges using aritificial intelligence to defend against modern threats.</p>
                 <button class="cta-btn" onclick="document.getElementById('contact').scrollIntoView({behavior: 'smooth'})">Get In Touch</button>
             </div>
         </div>
     </section>
 
-    <!-- About Section -->
-    <section id="about">
-        <h2 class="section-title">About Me</h2>
+    <!-- Skills Section -->
+    <section id="Skills">
+        <h2 class="section-title">Skills</h2>
         <div class="about-content">
             <div class="skill-card">
                 <h3>🔒 Cybersecurity</h3>
@@ -605,16 +610,16 @@
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>🎓 Master of Engineerin in Cybersecurity</h3>
-                    <h4> Gujarat Technological University | 2023 - 2025</h4>
-                    <p>Focus on software engineering, algorithms, and computer networks. Dean's List for academic excellence.</p>
+                    <h3>🎓 Master of Engineering in Cybersecurity</h3>
+                    <h4> Gujarat Technological University | India | 2023 - 2025</h4>
+                    <p>Focus on Network security, malware analysis, digital forensics and penetration testing.</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>🎓 Bachelor of science in Cmoputer Science</h3>
+                    <h3>🎓 Bachelor of science in Computer Science</h3>
                     <h4>Global Wealth University | Lome, Togo | 2018-2022</h4>
-                    <p>Focus on software engineering, algorithms, and computer networks.</p>
+                    <p>Took courses on software engineering, management, algorithms, and computer networks.</p>
                 </div>
             </div>
         </div>
@@ -626,27 +631,19 @@
         <div class="services-grid">
             <div class="service-card">
                 <h3>🤖 AI in Cybersecurity</h3>
-                <p>Exploring machine learning algorithms for threat detection, anomaly detection, and automated security response systems.</p>
+                <p>Exploring how intelligent agents can be used in cybersecurity for threat detection,vulnerability assessment and automated security response systems etc.</p>
             </div>
             <div class="service-card">
-                <h3>🔐 Cryptography</h3>
-                <p>Research in post-quantum cryptography, blockchain security, and privacy-preserving technologies.</p>
+                <h3>🔐 Blockchain Security</h3>
+                <p> Exploring Blockchain security, smart contracts and blockchain protocols.</p>
             </div>
             <div class="service-card">
-                <h3>🌐 IoT Security</h3>
-                <p>Investigating security vulnerabilities in Internet of Things devices and developing secure communication protocols.</p>
+                <h3>🌐 Cyber Security</h3>
+                <p>Safeguarding didgital assests and infrastructure.</p>
             </div>
             <div class="service-card">
                 <h3>☁️ Cloud Security</h3>
                 <p>Studying cloud infrastructure security, serverless architectures, and container security best practices.</p>
-            </div>
-            <div class="service-card">
-                <h3>🧬 Malware Analysis</h3>
-                <p>Advanced malware reverse engineering, behavior analysis, and developing detection mechanisms.</p>
-            </div>
-            <div class="service-card">
-                <h3>🔍 Threat Intelligence</h3>
-                <p>Research in cyber threat intelligence, attack attribution, and predictive security analytics.</p>
             </div>
         </div>
     </section>
@@ -656,28 +653,24 @@
         <h2 class="section-title">Services</h2>
         <div class="services-grid">
             <div class="service-card">
-                <h3>🔍 Penetration Testing</h3>
-                <p>Comprehensive security assessments to identify vulnerabilities before attackers do. Web apps, networks, and infrastructure testing.</p>
+                <h3>🔍Cybersecurity Consultation</h3>
+                <p>Offering expert guidance on securing IT infrastructures, identifying vulnerabilities, and implementing defense strategies against cyber threats. Securiy audits and Vulnerability assessment, penetration testing and threat analysis, and incident response planning.</p>
             </div>
             <div class="service-card">
-                <h3>🔐 Security Audits</h3>
-                <p>Detailed security audits and compliance assessments for your systems and applications.</p>
+                <h3>🔐 Security Operations (SOC) & SIEM Implementation</h3>
+                <p>Monitoring, analyzing, and responding to security events using SIEM toosl.</p>
             </div>
             <div class="service-card">
-                <h3>⚙️ Secure Development</h3>
-                <p>Building secure applications from the ground up with best practices and security frameworks.</p>
+                <h3>⚙️ Blockchain and Web3 Security</h3>
+                <p>Smart contract security analysis, Cryptocurrency fraud detection using AI, DeFi Analysis, Blockchain Data Analysis</p>
             </div>
             <div class="service-card">
-                <h3>📚 Security Training</h3>
-                <p>Training teams on secure coding practices, security awareness, and defensive programming.</p>
+                <h3>📚Research & Technical Writing</h3>
+                <p>Producing high-quality academic and technical research on cybersecurity, AI, and blockchain systems including Academic paper writing and publication and Research methodology consulting.</p>
             </div>
             <div class="service-card">
-                <h3>🚨 Incident Response</h3>
-                <p>Rapid response to security incidents, forensic analysis, and breach mitigation.</p>
-            </div>
-            <div class="service-card">
-                <h3>🛠️ Custom Solutions</h3>
-                <p>Developing custom security tools and automation scripts tailored to your needs.</p>
+                <h3>🚨Digital Forensics & Incident Response </h3>
+                <p>Investigating cyber incidents, collecting and analyzing digital evidence, and providing forensic reporting including Disk imaging and evidence acquisition, Log Analysis and Malware Analysis</p>
             </div>
         </div>
     </section>
@@ -689,43 +682,43 @@
             <div class="project-card">
                 <div class="project-img">🔒</div>
                 <div class="project-info">
-                    <h3>Security Scanner Tool</h3>
-                    <p>Automated vulnerability scanner for web applications with comprehensive reporting.</p>
+                    <h3>Malware Analysis</h3>
+                    <p>Performed Dynamic and static malware analysis.</p>
                 </div>
             </div>
             <div class="project-card">
                 <div class="project-img">🛡️</div>
                 <div class="project-info">
-                    <h3>Intrusion Detection System</h3>
-                    <p>ML-based IDS for detecting anomalous network traffic patterns.</p>
+                    <h3>Web Based Threat Detection</h3>
+                    <p>ML/DL-based model for detecting phishing websites.</p>
                 </div>
             </div>
             <div class="project-card">
                 <div class="project-img">🔐</div>
                 <div class="project-info">
-                    <h3>Password Manager</h3>
-                    <p>Secure password management application with end-to-end encryption.</p>
+                    <h3>Digital Forensics</h3>
+                    <p>Performed Disk Imaging using TX1 Tableau and Ram Memory capture using FTK Imager.</p>
                 </div>
             </div>
             <div class="project-card">
                 <div class="project-img">📊</div>
                 <div class="project-info">
-                    <h3>Security Dashboard</h3>
-                    <p>Real-time security monitoring dashboard for enterprise environments.</p>
+                    <h3>Security Operations and SIEM Implementation</h3>
+                    <p>Real time security monitoring dashboard including log monitoring and analysis and SIEM configuration</p>
                 </div>
             </div>
             <div class="project-card">
                 <div class="project-img">🔍</div>
                 <div class="project-info">
-                    <h3>Phishing Detection System</h3>
-                    <p>AI-powered system to detect and prevent phishing attacks.</p>
+                    <h3>Image Steganography</h3>
+                    <p>Embedded a message in an image file.</p>
                 </div>
             </div>
             <div class="project-card">
                 <div class="project-img">⚡</div>
                 <div class="project-info">
-                    <h3>API Security Gateway</h3>
-                    <p>Secure API gateway with rate limiting and threat protection.</p>
+                    <h3>Defensive Programming</h3>
+                    <p>Developed a website with secure code practice Implementation </p>
                 </div>
             </div>
         </div>
@@ -737,23 +730,25 @@
         <div class="timeline">
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>Senior Security Consultant</h3>
-                    <h4>CyberDefense Corp | 2022 - Present</h4>
-                    <p>Leading security assessments and penetration testing for Fortune 500 clients. Developed custom security solutions and trained teams on secure practices.</p>
+                    <h3>Graduate Researcher</h3>
+                    <h4>Gujarat Technological University | 2024 - 2025</h4>
+                    <p>Developed a deep learning based phishing detection model to enhance cybersecurity threat identification using AI and data driven techniques.</p>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>Full Stack Developer</h3>
-                    <h4>TechSolutions Inc | 2020 - 2022</h4>
-                    <p>Developed secure web applications using React and Node.js. Implemented security best practices and conducted code reviews.</p>
+                    <h3>Cybersecurity Intern </h3>
+                    <h4>Heritage Cyberworld | 2024 - 2025 </h4>
+                    <p>Assisted in monitoring network logs, detecting threats, and performing forensic imaging and memory analysis using tools like Splunk, Wazuh, TX1 Tableau, and Volatility 3.</p>
+                </div>
                 </div>
             </div>
             <div class="timeline-item">
                 <div class="timeline-content">
-                    <h3>Security Analyst</h3>
-                    <h4>SecureNet Systems | 2018 - 2020</h4>
-                    <p>Monitored security events, performed vulnerability assessments, and responded to security incidents.</p>
+                    <h3>Research Assistant</h3>
+                    <h4>LASUTH | 2022 - 2023</h4>
+                    <p>Supported multiple academic research projects by collecting, organizing clincal data by performing ocular examination under the supervision.</p>
+                </div>
                 </div>
             </div>
         </div>
@@ -764,28 +759,28 @@
         <h2 class="section-title">Certifications</h2>
         <div class="cert-grid">
             <div class="cert-card">
-                <h3>🎓 CEH</h3>
-                <p>Certified Ethical Hacker</p>
+                <h3>🎓 ISC2 CC</h3>
+                <p>Certified in Cybersecurity</p>
             </div>
             <div class="cert-card">
-                <h3>🎓 OSCP</h3>
-                <p>Offensive Security Certified Professional</p>
+                <h3>🎓 CISCO</h3>
+                <p>Endpoint Security</p>
             </div>
             <div class="cert-card">
-                <h3>🎓 CISSP</h3>
-                <p>Certified Information Systems Security Professional</p>
+                <h3>🎓 AWS</h3>
+                <p>AWS Cloud Foundations</p>
             </div>
             <div class="cert-card">
                 <h3>🎓 CompTIA Security+</h3>
-                <p>Security+ Certification</p>
+                <p>Security+ Certification(ongoing)</p>
             </div>
             <div class="cert-card">
-                <h3>🎓 AWS Security</h3>
-                <p>AWS Security Specialty</p>
+                <h3>🎓 GOOGLE</h3>
+                <p>GOOGLE AI Essential</p>
             </div>
             <div class="cert-card">
-                <h3>🎓 Web Security</h3>
-                <p>Advanced Web Security Certification</p>
+                <h3>🎓SKILLFRONT</h3>
+                <p>ISO/IEC 27001 Information Security Internal Auditor</p>
             </div>
         </div>
     </section>
@@ -797,34 +792,24 @@
             <div class="contact-card">
                 <div class="contact-icon">📧</div>
                 <h3>Email</h3>
-                <p>security@example.com</p>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">📱</div>
-                <h3>Phone</h3>
-                <p>+1 (555) 123-4567</p>
+                <p>ehigiedavid3@gmail.com</p>
             </div>
             <div class="contact-card">
                 <div class="contact-icon">📍</div>
                 <h3>Location</h3>
-                <p>San Francisco, CA</p>
-            </div>
-            <div class="contact-card">
-                <div class="contact-icon">💼</div>
-                <h3>LinkedIn</h3>
-                <p>linkedin.com/in/cybersec</p>
+                <p>India</p>
             </div>
         </div>
     </section>
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2025 CyberSec_Dev. All rights reserved.</p>
+        <p>&copy; 2025 David Toluwani Ehigie. All rights reserved.</p>
         <div class="social-links">
-            <a href="#">GitHub</a>
-            <a href="#">LinkedIn</a>
-            <a href="#">Twitter</a>
-            <a href="#">Medium</a>
+            <a href="https://github.com/david-ehigie">GitHub</a>
+            <a href="https://LinkedIn.com/in/david-toluwani-ehigie">LinkedIn</a>
+            <a href="https://x.com/david__ehigie">Twitter</a>
+            <a href="https://facebook.com/ehigie.david.2025">FaceBook</a>
         </div>
     </footer>
 
