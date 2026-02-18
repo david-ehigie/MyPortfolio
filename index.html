@@ -9,27 +9,19 @@
 *{margin:0;padding:0;box-sizing:border-box}
 :root{--primary:#00ff41;--secondary:#0a0e27;--dark:#050814;--text:#e0e0e0;--accent:#00d9ff}
 body{font-family:'Segoe UI',Tahoma,Verdana,sans-serif;background:var(--dark);color:var(--text);overflow-x:hidden}
-
-/* NAV */
 nav{position:fixed;top:0;width:100%;background:rgba(10,14,39,.95);z-index:1000;padding:1rem 5%}
 .nav-container{display:flex;justify-content:space-between;align-items:center;max-width:1200px;margin:auto}
 .nav-links{display:flex;list-style:none;gap:2rem}
 .nav-links a{color:var(--text);text-decoration:none}
 .nav-links a:hover{color:var(--primary)}
-
-/* HERO */
 .hero{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:2rem 5%}
 .hero-content{display:flex;align-items:center;gap:3rem;max-width:1200px}
 .profile-img{width:260px;height:260px;border-radius:50%;border:3px solid var(--primary);object-fit:cover}
-.hero-text h1{color:var(--primary)}
 .cta-btn{padding:1rem 2rem;background:var(--primary);border:none;border-radius:5px;font-weight:bold;cursor:pointer}
-
-/* SECTIONS */
 section{padding:5rem 5%;max-width:1200px;margin:auto}
 .section-title{text-align:center;margin-bottom:3rem;color:var(--primary)}
 .skills-content,.services-grid,.projects-grid,.contact-container{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:2rem}
 .skill-card,.service-card,.project-card,.contact-card{background:var(--secondary);padding:2rem;border-radius:10px;border:1px solid var(--primary)}
-
 footer{background:var(--secondary);padding:2rem;text-align:center}
 .social-links{display:flex;justify-content:center;gap:2rem;margin-top:1rem}
 .social-links a{color:var(--text);text-decoration:none}
@@ -44,6 +36,8 @@ footer{background:var(--secondary);padding:2rem;text-align:center}
 <ul class="nav-links">
 <li><a href="#home">Home</a></li>
 <li><a href="#skills">Skills</a></li>
+<li><a href="#research">Research</a></li>
+<li><a href="#services">Services</a></li>
 <li><a href="#projects">Projects</a></li>
 <li><a href="#experience">Experience</a></li>
 <li><a href="#contact">Contact</a></li>
@@ -55,7 +49,7 @@ footer{background:var(--secondary);padding:2rem;text-align:center}
 <section class="hero" id="home">
 <div class="hero-content">
 <img src="profile.jpg" class="profile-img">
-<div class="hero-text">
+<div>
 <h1>David Toluwani Ehigie</h1>
 <h2>PhD Scholar | AI-Driven Cybersecurity Researcher</h2>
 <p>I am a PhD researcher at Ahmedabad University specializing in artificial intelligence for cybersecurity, blockchain security, and fraud detection. My work focuses on applying machine learning to protect large-scale distributed and decentralized systems from emerging threats.</p>
@@ -71,19 +65,43 @@ footer{background:var(--secondary);padding:2rem;text-align:center}
 
 <div class="skill-card">
 <h3>Cybersecurity</h3>
-<p>Network security, SIEM monitoring, digital forensics, penetration testing and incident response.</p>
+<p>Network security, penetration testing, vulnerability assessment, SIEM monitoring and digital forensics.</p>
 </div>
 
 <div class="skill-card">
 <h3>Blockchain Security</h3>
-<p>Smart contract risks, DeFi threats and cryptocurrency fraud detection research.</p>
+<p>Smart contract risks, DeFi threats and cryptocurrency fraud detection.</p>
 </div>
 
 <div class="skill-card">
 <h3>Artificial Intelligence & Machine Learning</h3>
-<p>Applying ML/DL to phishing detection, fraud detection and anomaly detection.</p>
+<p>ML/DL for phishing detection, fraud detection and anomaly detection.</p>
 </div>
 
+</div>
+</section>
+
+<!-- RESEARCH -->
+<section id="research">
+<h2 class="section-title">Research Interests</h2>
+<div class="services-grid">
+<div class="service-card"><h3>AI for Security</h3><p>Fraud detection, anomaly detection and intelligent threat analysis.</p></div>
+<div class="service-card"><h3>Blockchain Security</h3><p>Smart contract and DeFi risk analysis.</p></div>
+<div class="service-card"><h3>Cybersecurity</h3><p>Threat detection and security analytics.</p></div>
+<div class="service-card"><h3>Distributed Systems Privacy</h3><p>Security in decentralized infrastructures.</p></div>
+</div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+<h2 class="section-title">Services</h2>
+<div class="services-grid">
+<div class="service-card"><h3>Cybersecurity Consulting</h3><p>Security assessments and vulnerability analysis.</p></div>
+<div class="service-card"><h3>SIEM & SOC</h3><p>Log monitoring and incident response.</p></div>
+<div class="service-card"><h3>AI Security Research</h3><p>ML-driven threat detection.</p></div>
+<div class="service-card"><h3>Blockchain Security</h3><p>Smart contract and DeFi security.</p></div>
+<div class="service-card"><h3>Digital Forensics</h3><p>Disk imaging and memory forensics.</p></div>
+<div class="service-card"><h3>Research Writing</h3><p>Technical and academic writing.</p></div>
 </div>
 </section>
 
@@ -91,30 +109,28 @@ footer{background:var(--secondary);padding:2rem;text-align:center}
 <section id="projects">
 <h2 class="section-title">Projects</h2>
 <div class="projects-grid">
-
-<div class="project-card"><h3>Deep Learning Phishing Detection</h3><p>CNN model for phishing website detection.</p></div>
-<div class="project-card"><h3>SIEM Deployment</h3><p>Wazuh & Splunk real-time monitoring.</p></div>
+<div class="project-card"><h3>Deep Learning Phishing Detection</h3><p>CNN-based phishing detection model.</p></div>
+<div class="project-card"><h3>SIEM Deployment</h3><p>Wazuh & Splunk monitoring.</p></div>
 <div class="project-card"><h3>Digital Forensics</h3><p>Disk imaging & memory analysis.</p></div>
 <div class="project-card"><h3>Malware Analysis</h3><p>Static & dynamic malware analysis.</p></div>
-
 </div>
 </section>
 
 <!-- EXPERIENCE -->
 <section id="experience">
 <h2 class="section-title">Experience</h2>
-<p>Graduate Researcher – Developed deep learning phishing detection model (GTU)</p>
+<p>Graduate Researcher – Deep learning phishing detection (GTU)</p>
 <p>Cybersecurity Intern – SOC & Digital Forensics (Heritage Cyberworld)</p>
 <p>Research Assistant – LASUTH</p>
 </section>
 
 <!-- CONTACT -->
 <section id="contact">
-<h2 class="section-title">Contact</h2>
+<h2 class="section-title">Get In Touch</h2>
 <div class="contact-container">
 <div class="contact-card">
 <h3>Email</h3>
-<p><a href="mailto:ehigiedavid3@gmail.com" style="color:var(--accent)">david.e@ahduni.edu.in</a></p>
+<p><a href="mailto:ehigiedavid3@gmail.com" style="color:var(--accent)">ehigiedavid3@gmail.com</a></p>
 </div>
 </div>
 </section>
